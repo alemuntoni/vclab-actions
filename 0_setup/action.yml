@@ -2,15 +2,24 @@ name: 'Setup Environment'
 description: 'Setup Environment'
 
 inputs:
+  script-path:
+    description: 'Script Path'
+    required: true
+    default: ''
+  script-arguments:
+    description: 'Script Arguments'
+    required: false
+    default: ''
   use-jurpel-qt-action:
     description: 'Use jurpel/qt-action'
     required: false
     type: boolean
     default: true
   qt-version:
-    description: 'Qt Version'
+    description: 'Qt Version - used with jurpel/qt-action'
     required: false
     default: '5.15.2'
+  
 
 runs:
   using: "composite"
@@ -31,9 +40,4 @@ runs:
       if: inputs.use-jurpel-qt-action == 'true'
       shell: bash
       run: |
-        bash scripts/${{ runner.os }}/0_setup_env.sh --dont_install_qt
-    - name: Install dependencies
-      if: inputs.use-jurpel-qt-action == 'false'
-      shell: bash
-      run: |
-        bash scripts/${{ runner.os }}/0_setup_env.sh
+        bash ${{ inputs.script-path }} ${{ inputs.script-arguments }}
