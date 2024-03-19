@@ -37,7 +37,6 @@ runs:
         cache: true
         version: ${{ inputs.qt-version }}
     - name: Install dependencies
-      if: inputs.use-jurpel-qt-action == 'true'
       shell: bash
       run: |
         bash ${{ inputs.script-path }} ${{ inputs.script-arguments }}
