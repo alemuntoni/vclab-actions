@@ -56,7 +56,7 @@ runs:
           echo "qt-option=" >> $GITHUB_OUTPUT
         fi
     - name: Set CodeSign Certificate macOS
-      if: ${{ runner.os  == 'macOS' && inputs.mac-certificate != ''}} 
+      if: ${{ runner.os  == 'macOS' && inputs.mac-certificate != ''}}
       uses: apple-actions/import-codesign-certs@v2
       with:
         p12-file-base64: ${{ inputs.mac-certificate }}
