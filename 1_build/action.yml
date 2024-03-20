@@ -40,4 +40,4 @@ runs:
     - name: Configure and Build
       shell: bash
       run: |
-        bash ${{ inputs.script-path }} ${{ steps.envs.outputs.script-arguments }}
+        bash ${{ inputs.script-path }} ${{ inputs.script-arguments }}
